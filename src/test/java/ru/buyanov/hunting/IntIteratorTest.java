@@ -16,9 +16,9 @@ public class IntIteratorTest {
         int[] arr = {1, 2, 3, 4, 5};
         IntIterable intIterable = new IntIterable(arr);
         Integer i = 0;
-        for (Integer el : intIterable) {
-            assertEquals(i + " element doesn't match", Integer.valueOf(arr[i]), el);
-            i++;
+        while(intIterable.iterator().hasNext()){ 	 
+        	assertEquals(i + " element doesn't match", Integer.valueOf(arr[i]), intIterable.iterator().next());
+        	i++;
         }
         assertEquals("Didn't went throw array", i, Integer.valueOf(arr.length));
     }
