@@ -3,7 +3,7 @@ package ru.buyanov.hunting;
 import java.util.Iterator;
 
 /**
- *  @author https://github.com/alex-on-java 03.02.2016
+ * @author https://github.com/alex-on-java 03.02.2016
  */
 public class IntIterable implements Iterable<Integer> {
     int[] backed;
@@ -18,16 +18,25 @@ public class IntIterable implements Iterable<Integer> {
     }
 
     private class IntIterator implements Iterator<Integer> {
+        int indexOfElement = 0;
 
         public boolean hasNext() {
-            //TODO: You task is implement this method
-            return false;
+            //Check for an existing index in an array
+            return indexOfElement < backed.length;
         }
 
         public Integer next() {
-            //TODO: You task is implement this method
-            return null;
+            //Check for an existing index in an array
+            if (!hasNext()) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+
+            //increment index and return the next element
+            indexOfElement++;
+
+            return backed[indexOfElement - 1];
         }
+
 
         public void remove() {
             throw new IllegalStateException("Could not remove from array");
