@@ -16,9 +16,9 @@ public class IntIterable implements Iterable<Integer> {
     public Iterator<Integer> iterator() {
         return new IntIterator();
     }
-	private int index = 0;
-    private class IntIterator implements Iterator<Integer> {
 
+    private class IntIterator implements Iterator<Integer> {
+		private int index = 0;
         public boolean hasNext() {
 			return index < backed.length;
         }
