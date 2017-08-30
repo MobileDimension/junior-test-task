@@ -18,15 +18,19 @@ public class IntIterable implements Iterable<Integer> {
     }
 
     private class IntIterator implements Iterator<Integer> {
+        int cursor;         // index of next element to return
+        int lastRet = -1;   // index of last element returned; -1 if no such
 
         public boolean hasNext() {
             //TODO: You task is implement this method
-            return false;
+            return cursor != backed.length;
         }
 
         public Integer next() {
             //TODO: You task is implement this method
-            return null;
+            int i = cursor;
+            cursor = i + 1;
+            return backed[lastRet = i];
         }
 
         public void remove() {
