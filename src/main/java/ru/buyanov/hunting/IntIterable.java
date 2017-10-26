@@ -18,15 +18,16 @@ public class IntIterable implements Iterable<Integer> {
 
     private class IntIterator implements Iterator<Integer> {
 
-        private int cursor = 0;
-
         public boolean hasNext() {
-            return cursor < backed.length;
+            return backed.length != 0;
         }
 
         public Integer next() {
-            if (!this.hasNext()) return null;
-            return backed[cursor++];
+            int[] subArrayOfBacked = new int[backed.length - 1];
+            for (int i = 1; i < backed.length; i++) subArrayOfBacked[i - 1] = backed[i];
+            int res = backed[0];
+            backed = subArrayOfBacked;
+            return res;
         }
 
         public void remove() {
