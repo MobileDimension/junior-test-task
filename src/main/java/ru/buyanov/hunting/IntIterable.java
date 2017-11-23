@@ -18,15 +18,17 @@ public class IntIterable implements Iterable<Integer> {
     }
 
     private class IntIterator implements Iterator<Integer> {
+        private int size = backed.length;
+        private int currId = 0;
 
         public boolean hasNext() {
             //TODO: You task is implement this method
-            return false;
+            return !(currId == size);
         }
 
         public Integer next() {
             //TODO: You task is implement this method
-            return null;
+            return backed[currId++];
         }
 
         public void remove() {
