@@ -6,11 +6,13 @@ import java.util.Iterator;
  *  @author https://github.com/alex-on-java 03.02.2016
  */
 public class IntIterable implements Iterable<Integer> {
-    int[] backed;
-
+    private int[] backed;
+    private int currentSize;
+    private int currentIndex = 0;
 
     public IntIterable(int[] backed) {
         this.backed = backed;
+        this.currentSize = backed.length;
     }
 
     public Iterator<Integer> iterator() {
@@ -20,13 +22,11 @@ public class IntIterable implements Iterable<Integer> {
     private class IntIterator implements Iterator<Integer> {
 
         public boolean hasNext() {
-            //TODO: You task is implement this method
-            return false;
+            return currentIndex < currentSize;
         }
 
         public Integer next() {
-            //TODO: You task is implement this method
-            return null;
+            return backed[currentIndex++];
         }
 
         public void remove() {
