@@ -26,7 +26,7 @@ public class IntIterable implements Iterable<Integer> {
         }
 
         public Integer next() {
-            if (index < backed.length) {
+            if (hasNext()) {
                 return backed[index++];
             } else {
                 throw new NoSuchElementException();
