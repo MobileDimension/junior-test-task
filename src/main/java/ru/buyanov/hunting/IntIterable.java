@@ -19,20 +19,18 @@ public class IntIterable implements Iterable<Integer> {
     }
 
     private class IntIterator implements Iterator<Integer> {
+        private int index = 0;
 
         public boolean hasNext() {
-            return backed.length > 0;
+            return index < backed.length;
         }
 
         public Integer next() {
-            if (!hasNext()) {
+            if (hasNext()) {
+                return backed[index++];
+            } else {
                 throw new NoSuchElementException();
             }
-            int[] backedSub = new int[backed.length - 1];
-            System.arraycopy(backed, 1, backedSub, 0, backed.length - 1);
-            int result = backed[0];
-            backed = backedSub;
-            return result;
         }
 
         public void remove() {
