@@ -1,12 +1,13 @@
 package ru.buyanov.hunting;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *  @author https://github.com/alex-on-java 03.02.2016
  */
 public class IntIterable implements Iterable<Integer> {
-    int[] backed;
+    private int[] backed;
 
 
     public IntIterable(int[] backed) {
@@ -18,15 +19,19 @@ public class IntIterable implements Iterable<Integer> {
     }
 
     private class IntIterator implements Iterator<Integer> {
+        private int cursor;
 
         public boolean hasNext() {
-            //TODO: You task is implement this method
-            return false;
+            return (cursor < backed.length);
         }
 
         public Integer next() {
-            //TODO: You task is implement this method
-            return null;
+            int current = cursor;
+            cursor++;
+            if (current>=backed.length){
+                throw new NoSuchElementException();
+            }
+            return backed[current];
         }
 
         public void remove() {
