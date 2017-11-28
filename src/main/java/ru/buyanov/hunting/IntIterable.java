@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  *  @author https://github.com/alex-on-java 03.02.2016
  */
 public class IntIterable implements Iterable<Integer> {
-    private int[] backed;
+    int[] backed;
 
 
     public IntIterable(int[] backed) {
@@ -20,7 +20,7 @@ public class IntIterable implements Iterable<Integer> {
     }
 
     private class IntIterator implements Iterator<Integer> {
-        int cursor;
+        private int cursor;
 
         public boolean hasNext() {
             return (backed.length > 0);
