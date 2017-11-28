@@ -1,5 +1,6 @@
 package ru.buyanov.hunting;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -19,19 +20,20 @@ public class IntIterable implements Iterable<Integer> {
     }
 
     private class IntIterator implements Iterator<Integer> {
-        private int cursor;
+        int cursor;
 
         public boolean hasNext() {
-            return (cursor < backed.length);
+            return (backed.length > 0);
         }
 
         public Integer next() {
-            int current = cursor;
-            cursor++;
-            if (current>=backed.length){
+            int len = backed.length;
+            if (len==0){
                 throw new NoSuchElementException();
             }
-            return backed[current];
+            int current = backed[0];
+            backed = Arrays.copyOfRange(backed, 1, len);
+            return current;
         }
 
         public void remove() {
