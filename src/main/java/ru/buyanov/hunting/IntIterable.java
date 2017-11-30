@@ -1,6 +1,7 @@
 package ru.buyanov.hunting;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *  @author https://github.com/alex-on-java 03.02.2016
@@ -26,7 +27,11 @@ public class IntIterable implements Iterable<Integer> {
         }
 
         public Integer next() {
-            return backed[index++];
+            if(hasNext()){
+                return backed[index++];
+            } else {
+                throw new NoSuchElementException();
+            }
         }
 
         public void remove() {
