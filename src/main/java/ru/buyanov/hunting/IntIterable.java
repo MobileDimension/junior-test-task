@@ -7,10 +7,12 @@ import java.util.Iterator;
  */
 public class IntIterable implements Iterable<Integer> {
     int[] backed;
+    int index;
 
 
     public IntIterable(int[] backed) {
         this.backed = backed;
+        this.index = 0;
     }
 
     public Iterator<Integer> iterator() {
@@ -20,13 +22,11 @@ public class IntIterable implements Iterable<Integer> {
     private class IntIterator implements Iterator<Integer> {
 
         public boolean hasNext() {
-            //TODO: You task is implement this method
-            return false;
+            return index < backed.length;
         }
 
         public Integer next() {
-            //TODO: You task is implement this method
-            return null;
+            return backed[index++];
         }
 
         public void remove() {
