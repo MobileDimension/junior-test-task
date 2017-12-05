@@ -20,9 +20,6 @@ public class IntIterable implements Iterable<Integer> {
 
     /**
      * Weakly consistent iterator for {@link IntIterable}
-     * Fail-fast implementation is not acceptable here, because
-     * {@link IntIterable} allows package-wide direct access to array
-     * The task did not infer modification of outer class, so it is considered forbidden for modification.
      */
     private class IntIterator implements Iterator<Integer> {
         int counter;
