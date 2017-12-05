@@ -1,6 +1,7 @@
 package ru.buyanov.hunting;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *  @author https://github.com/alex-on-java 03.02.2016
@@ -17,16 +18,23 @@ public class IntIterable implements Iterable<Integer> {
         return new IntIterator();
     }
 
+    /**
+     * Weakly consistent iterator for {@link IntIterable}
+     */
     private class IntIterator implements Iterator<Integer> {
+        int counter;
+        int[] backedCopy = backed.clone();//Iterator goes over copy of array, further array modifications ignored
 
         public boolean hasNext() {
-            //TODO: You task is implement this method
-            return false;
+            return counter < backedCopy.length;
         }
 
         public Integer next() {
-            //TODO: You task is implement this method
-            return null;
+            if (hasNext()) {
+                return backedCopy[counter++];
+            } else {
+                throw new NoSuchElementException();
+            }
         }
 
         public void remove() {
