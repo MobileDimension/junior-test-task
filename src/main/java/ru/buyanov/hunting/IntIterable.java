@@ -7,7 +7,7 @@ import java.util.Iterator;
  */
 public class IntIterable implements Iterable<Integer> {
     int[] backed;
-    private int currentInt =0;
+    private int currentInt = 0;
 
 
     public IntIterable(int[] backed) {
