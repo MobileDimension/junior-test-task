@@ -13,7 +13,7 @@ public class IntIteratorTest {
 
     @Test
     public void testForeach() {
-        int[] arr = {1, 2, 3, 4, 5};
+        int[] arr = {1, 2, 3, 4, 5 };
         IntIterable intIterable = new IntIterable(arr);
         Integer i = 0;
         for (Integer el : intIterable) {
